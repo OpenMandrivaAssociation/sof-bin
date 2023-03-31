@@ -5,7 +5,7 @@ Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
 Version:        2.2.4
-Release:        1
+Release:        2
 URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-v%{version}.tar.gz
 BuildArch:      noarch
