@@ -4,10 +4,10 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2.6
+Version:        2023.09
 Release:        1
 URL:            https://github.com/thesofproject/sof-bin
-Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-v%{version}.tar.gz
+Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildArch:      noarch
   
 BuildRequires:  fdupes
@@ -16,7 +16,7 @@ BuildRequires:  fdupes
 Various firmware data files for SOF drivers.
 
 %prep
-%setup -q -n sof-bin-v%{version}
+%setup -q -n sof-bin-%{version}
 
 %build
 
