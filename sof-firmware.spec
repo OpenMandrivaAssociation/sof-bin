@@ -23,7 +23,7 @@ Various firmware data files for SOF drivers.
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/intel
 # due to the upgrade problem, we can't make sof-v* -> sof symlink
-cp -a sof-v%{version} %{buildroot}%{_firmwaredir}/intel/sof
+cp -a sof-%{version} %{buildroot}%{_firmwaredir}/intel/sof
 cp -a sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/
 ln -s sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
 %fdupes -s %{buildroot}
