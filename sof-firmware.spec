@@ -28,7 +28,6 @@ TOOLS_DEST=%{buildroot}%{_bindir} \
 rm -rf %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}
 
-cd sof-bin-%{version}
 cp -at /usr/lib/firmware/intel sof*
 
 
