@@ -22,11 +22,23 @@ Various firmware data files for SOF drivers.
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/intel
-# due to the upgrade problem, we can't make sof-v* -> sof symlink
-cp -a sof-%{version} %{buildroot}%{_firmwaredir}/intel/sof
-cp -a sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/
-ln -s sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
+mkdir -p %{buildroot}%{_bindir}
+FW_DEST=%{buildroot}%{_firmwaredir}/intel \
+TOOLS_DEST=%{buildroot}%{_bindir} \
+./install.sh
+rm -rf %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}
+
+# workaround for changing symlinked directory
+%pre
+if [ -L %{_firmwaredir}/intel/sof-tplg ]; then
+  f=$(readlink -f %{_firmwaredir}/intel/sof-tplg)
+  case $f in
+    %{_firmwaredir}/intel/*)
+      rm -rf $f
+      rm -f %{_firmwaredir}/intel/sof-tplg;;
+  esac
+fi
 
 %files
 %license LICENCE.*
