@@ -25,7 +25,6 @@ mkdir -p %{buildroot}%{_firmwaredir}/intel
 mkdir -p %{buildroot}%{_bindir}
 FW_DEST=%{buildroot}%{_firmwaredir}/intel \
 TOOLS_DEST=%{buildroot}%{_bindir} \
-./install.sh
 rm -rf %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}
 
