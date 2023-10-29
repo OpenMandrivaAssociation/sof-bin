@@ -28,16 +28,9 @@ TOOLS_DEST=%{buildroot}%{_bindir} \
 rm -rf %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}
 
-# workaround for changing symlinked directory
-%pre
-if [ -L %{_firmwaredir}/intel/sof-tplg ]; then
-  f=$(readlink -f %{_firmwaredir}/intel/sof-tplg)
-  case $f in
-    %{_firmwaredir}/intel/*)
-      rm -rf $f
-      rm -f %{_firmwaredir}/intel/sof-tplg;;
-  esac
-fi
+cd sof-bin-%{version}
+cp -at /usr/lib/firmware/intel sof*
+
 
 %files
 %license LICENCE.*
