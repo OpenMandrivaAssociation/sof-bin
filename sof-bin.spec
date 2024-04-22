@@ -1,7 +1,7 @@
 %undefine _debugsource_packages
 %global _firmwaredir %{_prefix}/lib/firmware
 
-Name:           sof-firmware
+Name:           sof-bin
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
@@ -11,6 +11,7 @@ URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:	rsync
+Obsoletes:	sof-firmware < 1:0
 
 %description
 Various firmware data files for SOF drivers.
