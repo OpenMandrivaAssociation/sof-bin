@@ -2,7 +2,7 @@
 %global _firmwaredir %{_prefix}/lib/firmware
 
 Name:           sof-bin
-Summary:        Firmware Data Files for SOF Drivers
+Summary:        Files for working with SOF firmware
 License:        BSD-3-Clause
 Group:          Hardware/Other
 Version:        2024.03
@@ -11,9 +11,17 @@ URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:	rsync
-Obsoletes:	sof-firmware < 1:0
+Requires:	sof-firmware = %{EVRD}
 
 %description
+Files for working with SOF firmware
+
+%package -n sof-firmware
+Summary:	Various firmware data files for SOF drivers.
+Group:		Hardware/Other
+BuildArch:	noarch
+
+%description -n sof-firmware
 Various firmware data files for SOF drivers.
 
 %prep
@@ -30,4 +38,6 @@ FW_DEST="%{buildroot}%{_firmwaredir}/intel" TOOLS_DEST="%{buildroot}%{_bindir}" 
 %license LICENCE.*
 %doc README.*
 %{_bindir}/*
+
+%files -n sof-firmware
 %{_firmwaredir}/*
