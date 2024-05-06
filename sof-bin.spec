@@ -6,7 +6,7 @@ Summary:        Files for working with SOF firmware
 License:        BSD-3-Clause
 Group:          Hardware/Other
 Version:        2024.03
-Release:        1
+Release:        2
 URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -20,6 +20,9 @@ Files for working with SOF firmware
 Summary:	Various firmware data files for SOF drivers.
 Group:		Hardware/Other
 BuildArch:	noarch
+# FIXME this is weird and should certainly not be necessary, but
+# let's see if it fixes updating...
+Obsoletes:	sof-firmware < 3.0.0-1
 
 %description -n sof-firmware
 Various firmware data files for SOF drivers.
