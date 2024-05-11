@@ -6,7 +6,7 @@ Summary:        Files for working with SOF firmware
 License:        BSD-3-Clause
 Group:          Hardware/Other
 Version:        2024.03
-Release:        2
+Release:        3
 URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -20,9 +20,6 @@ Files for working with SOF firmware
 Summary:	Various firmware data files for SOF drivers.
 Group:		Hardware/Other
 BuildArch:	noarch
-# FIXME this is weird and should certainly not be necessary, but
-# let's see if it fixes updating...
-Obsoletes:	sof-firmware < 3.0.0-1
 
 %description -n sof-firmware
 Various firmware data files for SOF drivers.
@@ -36,6 +33,16 @@ Various firmware data files for SOF drivers.
 mkdir -p "%{buildroot}%{_firmwaredir}/intel" "%{buildroot}%{_bindir}"
 FW_DEST="%{buildroot}%{_firmwaredir}/intel" TOOLS_DEST="%{buildroot}%{_bindir}" ./install.sh
 %fdupes -s %{buildroot}
+
+# In sof-firmware 2.2.6 (2024-05-11, OM 5.0),
+# /usr/lib/firmware/intel/sof-tplg
+# was a symlink. Now it's a directory. This scriptlet can go as soon as
+# we stop supporting updates from anything that had <= 2.2.6
+%pretrans -n sof-firmware -p <lua>
+st = posix.stat("%{_firmwaredir}/intel/sof-tplg")
+if st and st.type == "link" then
+	os.remove("%{_firmwaredir}/intel/sof-tplg")
+end
 
 %files
 %license LICENCE.*
