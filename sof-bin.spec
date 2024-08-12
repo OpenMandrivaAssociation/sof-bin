@@ -5,8 +5,8 @@ Name:           sof-bin
 Summary:        Files for working with SOF firmware
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2024.03
-Release:        3
+Version:        2024.06
+Release:        1
 URL:            https://github.com/thesofproject/sof-bin
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
 BuildRequires:  fdupes
